@@ -19,8 +19,8 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  logmonitor_flutter: ^1.0.0
-  logging: ^1.2.0
+  logmonitor_flutter: ^0.1.0
+  logging: ^1.3.0
 ```
 
 ### 2. Initialize Logmonitor
