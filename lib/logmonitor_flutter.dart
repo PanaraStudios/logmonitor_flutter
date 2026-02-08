@@ -216,13 +216,26 @@ class Logmonitor {
 
   /// Adds a [LogRecord] to the internal buffer and triggers a send if the
   /// buffer has reached [_maxBatchSize].
+  ///
+  /// The log entry's `payload` is a structured map that may contain:
+  /// - `data` — the [LogRecord.object], if provided.
+  /// - `error` — the string representation of [LogRecord.error], if present.
+  /// - `stackTrace` — the full [LogRecord.stackTrace] string, if present.
+  ///
+  /// If none of these fields are set, `payload` is `null`.
   void _addLog(LogRecord record) {
+    final payload = <String, dynamic>{
+      if (record.object != null) 'data': record.object,
+      if (record.error != null) 'error': record.error.toString(),
+      if (record.stackTrace != null)
+        'stackTrace': record.stackTrace.toString(),
+    };
     final logData = {
       'level': _mapLogLevel(record.level),
       'message': record.message,
       'clientTimestamp': record.time.millisecondsSinceEpoch,
       'logUserId': _logUserId ?? '',
-      'payload': record.object,
+      'payload': payload.isNotEmpty ? payload : null,
     };
     _logBuffer.add(logData);
     if (_logBuffer.length >= _maxBatchSize) {

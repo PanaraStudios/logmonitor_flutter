@@ -1,3 +1,7 @@
+## 0.1.1
+
+-   Added error and stack trace support — `LogRecord.error` and `LogRecord.stackTrace` are now included in the log payload.
+
 ## 0.1.0
 
 -   Updated Dart SDK constraint to `^3.10.0` and Flutter to `>=3.29.0`.
