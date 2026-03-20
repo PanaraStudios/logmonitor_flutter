@@ -89,7 +89,7 @@ class Logmonitor {
 
   // --- Private State ---
   static const String _endpoint =
-      "https://aromatic-duck-387.convex.site/api/v1/logs";
+      "https://api.logmonitor.io/api/v1/logs";
   String? _apiKey;
   String? _bundleId;
   String? _logUserId;
@@ -227,14 +227,13 @@ class Logmonitor {
     final payload = <String, dynamic>{
       if (record.object != null) 'data': record.object,
       if (record.error != null) 'error': record.error.toString(),
-      if (record.stackTrace != null)
-        'stackTrace': record.stackTrace.toString(),
+      if (record.stackTrace != null) 'stackTrace': record.stackTrace.toString(),
     };
     final logData = {
       'level': _mapLogLevel(record.level),
       'message': record.message,
       'clientTimestamp': record.time.millisecondsSinceEpoch,
-      'logUserId': _logUserId ?? '',
+      'logUserId': _logUserId,
       'payload': payload.isNotEmpty ? payload : null,
     };
     _logBuffer.add(logData);
@@ -251,6 +250,7 @@ class Logmonitor {
   /// - All others → `'log'`
   String _mapLogLevel(Level level) {
     if (level == Level.SEVERE) return 'error';
+    if (level == Level.SHOUT) return 'error';
     if (level == Level.WARNING) return 'warn';
     if (level == Level.INFO) return 'info';
     return 'log';

@@ -1,3 +1,9 @@
+## 0.1.2
+
+-   Fixed API endpoint to use the correct production URL.
+-   Fixed `logUserId` to send `null` instead of empty string when no user is set.
+-   Added `Level.SHOUT` mapping to `'error'` log level.
+
 ## 0.1.1
 
 -   Added error and stack trace support — `LogRecord.error` and `LogRecord.stackTrace` are now included in the log payload.
