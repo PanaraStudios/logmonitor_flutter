@@ -1,10 +1,19 @@
 
 name: logmonitor_flutter
-description: The official Flutter SDK for Logmonitor.io. See your production logs in real-time, just like your local console.
-version: 0.1.2
+description: >
+  The official Flutter SDK for Logmonitor.io. Captures logs, print() calls,
+  debugPrint() output, and Flutter errors — then streams them to your
+  dashboard in real-time.
+version: 0.2.0
 homepage: https://logmonitor.io
-repository: https://github.com/panarastudios/logmonitor_flutter # IMPORTANT
-issue_tracker: https://github.com/panarastudios/logmonitor_flutter/issues # IMPORTANT
+repository: https://github.com/panarastudios/logmonitor_flutter
+issue_tracker: https://github.com/panarastudios/logmonitor_flutter/issues
+topics:
+  - logging
+  - monitoring
+  - error-handling
+  - debugging
+  - observability
 
 environment:
   sdk: ^3.10.0

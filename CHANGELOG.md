@@ -1,3 +1,12 @@
+## 0.2.0
+
+-   Added automatic `print()` interception via zone-based capture (`captureAllPrints` flag).
+-   Added `debugPrint` override to capture Flutter framework diagnostics.
+-   Added `FlutterError.onError` and `PlatformDispatcher.instance.onError` hooks (`captureFlutterErrors` flag).
+-   Added `Logmonitor.runGuarded()` method to wrap `runApp()` in a guarded zone.
+-   Exposed `Logmonitor.onError` and `Logmonitor.zoneSpec` for advanced zone composition.
+-   All new features are opt-in and fully backward-compatible.
+
 ## 0.1.2
 
 -   Fixed API endpoint to use the correct production URL.
